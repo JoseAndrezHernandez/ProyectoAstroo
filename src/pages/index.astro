@@ -1,0 +1,86 @@
+---
+import Layots from "../Layouts/Layots.astro"
+import TechCards from "../Compounents/TechCards.astro"
+import Cards from "../Compounents/Cards.astro"
+
+interface Tecitems{
+	title:string;
+	tech:string[];
+}
+
+const techItems: Tecitems []=[
+
+{
+
+title: "Bakend",
+tech:["Java","C#","Python","Unity","Astro"]
+
+},
+
+{
+	title: "Frontend",
+	tech:["DeveExtreme","Unity","HTML","CSS","Astro"]
+}
+
+]
+---
+
+<Layots title="Sobre Mi Mi portafilio">
+
+	<main class="container mx-auto px-4 py-8">
+
+		<section class="mb-12">
+            <h2 class="text-4xl font-bold mb-4">Sobre Mi</h2>
+			<p>¡Hola! soy Jose Andrez Hernandez Garcia, estudiante de ingenieria en sistemas y este es mi portafolios. Me alegra que
+				estes aqui, espero que sea de utilidad esta pagina para que conoscas un poco de mis competencias.
+			</p>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-4xl font-bold mb-4">Mis tecnologias</h2>
+			<div>
+				{techItems.map((item)=>(
+					<TechCards title= {item.title} tech= {item.tech}/>
+				))
+				}
+			</div>
+        </section>
+
+		<section>
+			<section class="mb-12">
+				<h2 class="text-4xl font-bold mb-4">Mis Proyectos</h2>
+
+		</section>
+
+		<section>
+			<div>
+				<Cards 
+				title="Juego de Zombies"
+				descripcion="Un juego inspirado en COD algo modesto y por rondas"
+				link="https://github.com/JoseAndrezHernandez/Trabajos/blob/814d673d9eb7ee3187416480971b10f612bd47f8/Java%20trabajos/2Ejercicio4.txt"
+		/>
+			</div>
+		</section>
+
+		<section>
+			<div>
+				<Cards
+				title="Torres De Hannoi"
+				descripcion="Juego de pruebas, probando grafos"
+				link="https://github.com/JoseAndrezHernandez/Trabajos/blob/814d673d9eb7ee3187416480971b10f612bd47f8/NumerosRomanos.txt"
+				/>
+			</div>
+		</section>
+		
+		<section>
+			<div>
+				<Cards 
+				title="Gestion de Datos de una aplicacion parecidad a Linkdln"
+				descripcion="Gestion de likes, publicaciones, perfiles, comentarios. Usando la herramienta del DevExtreme como pinicipas ayuda"
+				link="https://github.com/JoseAndrezHernandez/Trabajos/blob/814d673d9eb7ee3187416480971b10f612bd47f8/TecladosComprar.txt"
+				/>
+			</div>
+		</section>
+    </main>
+
+</Layots>
