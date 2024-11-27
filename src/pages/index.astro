@@ -2,11 +2,25 @@
 import Layots from "../Layouts/Layots.astro"
 import TechCards from "../Compounents/TechCards.astro"
 import Cards from "../Compounents/Cards.astro"
-
+import { getCollection } from "astro:content"
 interface Tecitems{
 	title:string;
 	tech:string[];
 }
+
+interface proyectitems{
+
+	slug: string;
+	data:{
+
+		titulo: string;
+		shortDescripcion: string;
+	}
+
+
+}
+
+const proyecto: proyectitems [] =await getCollection ("Proyectos")
 
 const techItems: Tecitems []=[
 
@@ -32,7 +46,7 @@ tech:["Java","C#","Python","Unity","Astro"]
 		<section class="mb-12">
             <h2 class="text-4xl font-bold mb-4">Sobre Mi</h2>
 			<p>¡Hola! soy Jose Andrez Hernandez Garcia, estudiante de ingenieria en sistemas y este es mi portafolios. Me alegra que
-				estes aqui, espero que sea de utilidad esta pagina para que conoscas un poco de mis competencias.
+				estes aqui, espero que sea de utilidad para saber mas de mi.
 			</p>
         </section>
 
@@ -54,20 +68,22 @@ tech:["Java","C#","Python","Unity","Astro"]
 
 		<section>
 			<div>
-				<Cards 
-				title="Juego de Zombies"
-				descripcion="Un juego inspirado en COD algo modesto y por rondas"
-				link="https://github.com/JoseAndrezHernandez/Trabajos/blob/814d673d9eb7ee3187416480971b10f612bd47f8/Java%20trabajos/2Ejercicio4.txt"
-		/>
+
+				{proyecto.map((p)=> <Cards 
+					title={p.data.titulo}
+					descripcion={p.data.shortDescripcion}
+					link="https://github.com/JoseAndrezHernandez/Trabajos/blob/814d673d9eb7ee3187416480971b10f612bd47f8/Java%20trabajos/2Ejercicio4.txt"
+			/>)}
+				
 			</div>
 		</section>
 
 		<section>
 			<div>
 				<Cards
-				title="Torres De Hannoi"
-				descripcion="Juego de pruebas, probando grafos"
-				link="https://github.com/JoseAndrezHernandez/Trabajos/blob/814d673d9eb7ee3187416480971b10f612bd47f8/NumerosRomanos.txt"
+				title="preguntas_cvs"
+				descripcion="respondiendo preguntas claves de un cvs"
+				link="CSV Cuaderno prueba (6).html"
 				/>
 			</div>
 		</section>
