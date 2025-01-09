@@ -4,6 +4,7 @@ import TechCards from "../Compounents/TechCards.astro"
 import Header from "../Compounents/Header.astro";
 import Cards from "../Compounents/Cards.astro";
 import Futhers from "../Compounents/Futhers.astro";
+import '@fontsource-variable/onest';
 
 export interface Props {
     title: string
@@ -12,6 +13,7 @@ export interface Props {
 
 const { title } = Astro.props;
 ---
+<!doctype html>
 
 <html lang="es">
 <head>
@@ -20,16 +22,20 @@ const { title } = Astro.props;
     <title>{title}</title>
 </head>
 
-    <Header />
 
-
-    <main class="flex-grow container mx-auto px-4 py-8">
-        <slot />
-        
-    </main>
-
-    <Futhers/>
-
+<body class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 
+bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+    <div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 
+    bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+    </div>
     
-</body>
+    <Header />
+    
+    <slot />
+    
+
+</body> 
+
+<Futhers/>  
+
 </html>

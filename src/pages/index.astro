@@ -3,6 +3,18 @@ import Layots from "../Layouts/Layots.astro"
 import TechCards from "../Compounents/TechCards.astro"
 import Cards from "../Compounents/Cards.astro"
 import { getCollection } from "astro:content"
+import Badage from "../Compounents/badage.astro"
+import Github from "../Compounents/icons/Github.astro"
+import Socialpill from "../Compounents/Socialpill.astro"
+import Linkedln from "../Compounents/icons/Linkedln.astro"
+import Outlook from "../Compounents/icons/Outlook.astro"
+import Gmail from "../Compounents/icons/Gmail.astro"
+import TecIcon from "../Compounents/icons/TecIcon.astro"
+import Tecnolgis from "../Compounents/icons/Tecnologis.astro"
+
+import '@fontsource-variable/onest';
+import Briefcase from "../Compounents/icons/Briefcase.astro"
+import Cpu from "../Compounents/icons/Cpu.astro"
 interface Tecitems{
 	title:string;
 	tech:string[];
@@ -16,8 +28,6 @@ interface proyectitems{
 		titulo: string;
 		shortDescripcion: string;
 	}
-
-
 }
 
 const proyecto: proyectitems [] =await getCollection ("Proyectos")
@@ -26,66 +36,120 @@ const techItems: Tecitems []=[
 
 {
 
-title: "Bakend",
-tech:["Java","C#","Python","Unity","Astro"]
+title: "Backend",
+tech:["Java","JavaScript","C#","Python","Unity","Go"]
 
+},
+
+
+{
+	title:"Análisis de Datos y Business Intelligence",
+	tech:["Databricks"]
+},
+
+
+{
+	title: "Framework",
+	tech: ["Astro", "gRPC (arquitectura de microservicio)"]
+},
+
+{
+ title:"Ciber seguridad",
+ tech:["Wireshark"]
 },
 
 {
 	title: "Frontend",
-	tech:["DeveExtreme","Unity","HTML","CSS","Astro"]
-}
+	tech:["DevExtreme","HTML","CSS","TailwindCSS"]
+	
+},
 
-]
+
+
+
+];
 ---
 
-<Layots title="Sobre Mi Mi portafilio">
+	
+
+<Layots title="Sobre Mi">
 
 	<main class="container mx-auto px-4 py-8">
 
-		<section class="mb-12">
-            <h2 class="text-4xl font-bold mb-4">Sobre Mi</h2>
-			<p>¡Hola! soy Jose Andrez Hernandez Garcia, estudiante de ingenieria en sistemas y este es mi portafolios. Me alegra que
-				estes aqui, espero que sea de utilidad para saber mas de mi.
-			</p>
-        </section>
+		<section class="mb-12 flex justify-center items-center">
+			
+			
+			<div>
+				<h1 class=" text-4xl font-bold mb-3 text-[rgb(205,200,195)]">Hola, soy Jose Andrez Hernandez Garcia
+					<Badage></Badage></h1>
+
+				<p class="text-1xl opacity- 80 text-[rgb(205,200,195)]"><span class="text-yellow-200">Estudiante de Ingenieria en Sistemas en su tercer año.</span>
+					 Soy de Honduras, Comayagua.<span class="text-lime-200"> Me estoy especializando en Ciber seguridad.</span></p> 
+
+					 <nav class="flex gap-x-4 mt-8">
+
+						<Socialpill href="https://github.com/JoseAndrezHernandez" >
+							<Github Icon class="w-6 h-6"/>
+							<p class="text-1xl opacity- 80 text-[rgb(205,200,195)] " >Github</p>
+						</Socialpill>
+	
+						<Socialpill>
+							<Linkedln  Icon class="w-6 h-6"/>
+									<p class="text-1xl opacity- 80 text-[rgb(205,200,195)]">Linked</p>
+						</Socialpill>
+	
+						<Socialpill>
+							<Outlook  Icon class="w-6 h-6"/>
+									<p class="text-1xl opacity- 80 text-[rgb(205,200,195)]">joseadnrehernandez61@outlook.com</p>
+							
+						</Socialpill>
+	
+						<Socialpill>
+							<Gmail  Icon class="w-6 h-6"/>
+									<p class="text-1xl opacity- 80 text-[rgb(205,200,195)]">josehernandezelpro@gmail.com</p>
+							
+						</Socialpill>
+														
+				</nav>
+			</div>
+		</section>
+
+		<h2></h2>
+
 
         <section class="mb-12">
-            <h2 class="text-4xl font-bold mb-4">Mis tecnologias</h2>
-			<div>
-				{techItems.map((item)=>(
-					<TechCards title= {item.title} tech= {item.tech}/>
-				))
-				}
+			
+            <h2 class="text-3xl font-bold text-[rgb(205,200,195)] mb-12 flex justify-center gap-x-2 items-center ">
+				<Cpu class="size-8"/>
+					Mis tecnologias
+			</h2>
+	
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 gap-8">
+				{techItems.map((item) => (
+					<TechCards title={item.title} tech={item.tech} />
+				))}
 			</div>
         </section>
 
 		<section>
-			<section class="mb-12">
-				<h2 class="text-4xl font-bold mb-4">Mis Proyectos</h2>
-
+			<section class="w-full mx-auto lg:w-[250px] ">
+				<h2 class="text-3xl flex font-bold gap-x-3 items-center mb-10 text-[rgb(205,200,195)]">
+					<Briefcase class="size-7 "/>
+					 Mis Proyectos
+				</h2>
 		</section>
-
-		<section>
-			<div>
-
-				{proyecto.map((p)=> <Cards 
-					title={p.data.titulo}
-					descripcion={p.data.shortDescripcion}
-					link="https://github.com/JoseAndrezHernandez/Trabajos/blob/814d673d9eb7ee3187416480971b10f612bd47f8/Java%20trabajos/2Ejercicio4.txt"
-			/>)}
-				
-			</div>
-		</section>
-
 		<section>
 			<div>
 				<Cards
-				title="preguntas_cvs"
-				descripcion="respondiendo preguntas claves de un cvs"
+				title="Preguntas_cvs"
+				descripcion="respondiendo preguntas claves de un cvs" 
 				link="CSV Cuaderno prueba (8).html"
+				imgSrc="493shots_so.jpeg"
+				imgAlt="Hola"
+				
 				/>
 			</div>
+			
 		</section>
 
 		<section>
@@ -94,6 +158,7 @@ tech:["Java","C#","Python","Unity","Astro"]
 				title="git_Data_bricks"
 				descripcion="respondiendo preguntas claves de un cvs"
 				link="https://github.com/JoseAndrezHernandez/Data-Scala.git"
+				imgSrc=""
 				/>
 			</div>
 		</section>
@@ -110,6 +175,7 @@ tech:["Java","C#","Python","Unity","Astro"]
 
 		<section>
 			<div>
+				
 				<Cards 
 				title="Link de bd desplegada en Azure"
 				descripcion="La base desplegada en la nuve mediante Azure"
@@ -129,5 +195,6 @@ tech:["Java","C#","Python","Unity","Astro"]
 		</section>
 
     </main>
+	
 
 </Layots>
